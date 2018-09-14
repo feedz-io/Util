@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util", "Util\Util.csproj", "{C0967CBB-FC36-499C-943B-0B42149FAD4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{6B1BF189-94C5-4CB7-B14A-FB09B2CD9D5A}"
+ProjectSection(SolutionItems) = preProject
+	build.cake = build.cake
+EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0967CBB-FC36-499C-943B-0B42149FAD4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0967CBB-FC36-499C-943B-0B42149FAD4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0967CBB-FC36-499C-943B-0B42149FAD4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0967CBB-FC36-499C-943B-0B42149FAD4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
