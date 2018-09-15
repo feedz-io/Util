@@ -1,12 +1,14 @@
 ﻿// Apache 2.0 Licence
 // From https://github.com/OctopusDeploy/Calamari/blob/master/source/Calamari/Integration/Processes/SilentProcessRunner.cs
+
 using System;
 using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
+using Feedz.Util.Extensions;
 
-namespace Feedz.Util
+namespace Feedz.Util.Processes
 {
     public class ProcessRunner
     {

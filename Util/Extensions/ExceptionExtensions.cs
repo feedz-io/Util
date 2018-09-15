@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Feedz.Util
+namespace Feedz.Util.Extensions
 {
     public static class ExceptionExtensions
     {

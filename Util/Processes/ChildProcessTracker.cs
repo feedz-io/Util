@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace Feedz.Util
+namespace Feedz.Util.Processes
 {
     /// <summary>
     /// Allows processes to be automatically killed if this parent process unexpectedly quits.
