@@ -17,7 +17,8 @@ namespace Feedz.Util
         Error,
         Forbidden,
         Invalid,
-        NotFound
+        NotFound,
+        Conflict
     }
 
     public class Result : IResult
@@ -64,6 +65,13 @@ namespace Feedz.Util
                 Type = ResultType.Invalid,
                 Message = message
             };
+        
+        public static Result Conflict(string message)
+            => new Result()
+            {
+                Type = ResultType.Conflict,
+                Message = message
+            };
 
         public static Result<T> Error<T>(string error)
             => Result<T>.Error(error);
@@ -76,6 +84,9 @@ namespace Feedz.Util
 
         public static Result<T> NotFound<T>(string error)
             => Result<T>.NotFound(error);
+        
+        public static Result<T> Conflict<T>(string error)
+            => Result<T>.Conflict(error);
 
         public static Result DiscardValue<T>(Result<T> result)
             => new Result
@@ -157,6 +168,12 @@ namespace Feedz.Util
         public static Result<T> NotFound(string message) => new Result<T>()
         {
             Type = ResultType.NotFound,
+            Message = message
+        };
+        
+        public static Result<T> Conflict(string message) => new Result<T>()
+        {
+            Type = ResultType.Conflict,
             Message = message
         };
     }
