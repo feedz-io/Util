@@ -13,12 +13,13 @@ namespace Feedz.Util
 
     public enum ResultType
     {
-        Success,
-        Error,
-        Forbidden,
-        Invalid,
-        NotFound,
-        Conflict
+        Success = 1,
+        Error = 2,
+        Forbidden = 3,
+        Unauthorised = 4,
+        Invalid = 5,
+        NotFound = 6,
+        Conflict = 7
     }
 
     public class Result : IResult
@@ -59,6 +60,13 @@ namespace Feedz.Util
             };
 
 
+        public static Result Unauthorised(string message)
+            => new Result()
+            {
+                Type = ResultType.Unauthorised,
+                Message = message
+            };
+
         public static Result Invalid(string message)
             => new Result()
             {
@@ -78,6 +86,9 @@ namespace Feedz.Util
 
         public static Result<T> Forbidden<T>(string error)
             => Result<T>.Forbidden(error);
+        
+        public static Result<T> Unauthorised<T>(string error)
+            => Result<T>.Unauthorised(error);
 
         public static Result<T> Invalid<T>(string error)
             => Result<T>.Invalid(error);
@@ -155,6 +166,13 @@ namespace Feedz.Util
             => new Result<T>()
             {
                 Type = ResultType.Forbidden,
+                Message = message
+            };
+        
+        public static Result<T> Unauthorised(string message)
+            => new Result<T>()
+            {
+                Type = ResultType.Unauthorised,
                 Message = message
             };
 
