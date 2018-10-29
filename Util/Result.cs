@@ -200,5 +200,10 @@ namespace Feedz.Util
     {
         public static Result<T> AsResult<T>(this T value)
             => Result<T>.Success(value);
+
+        public static Result<TReturn> Select<T, TReturn>(this Result<T> result, Func<T, TReturn> select)
+            => result.Successful
+                ? Result<TReturn>.Success(select(result.Value))
+                : Result<TReturn>.FromFailure(result);
     }
 }
