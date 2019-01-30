@@ -133,8 +133,8 @@ namespace Feedz.Util.Processes
                         while(!process.WaitForExit(100))
                         {}
                         
-                        outputWaitHandle.WaitOne();
-                        errorWaitHandle.WaitOne();
+                        outputWaitHandle.WaitOne(100);
+                        errorWaitHandle.WaitOne(100);
 
                         return process.ExitCode;
                     }
