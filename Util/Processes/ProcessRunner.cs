@@ -130,7 +130,9 @@ namespace Feedz.Util.Processes
                         process.BeginOutputReadLine();
                         process.BeginErrorReadLine();
 
-                        process.WaitForExit();
+                        while(!process.WaitForExit(100))
+                        {}
+                        
                         outputWaitHandle.WaitOne();
                         errorWaitHandle.WaitOne();
 
