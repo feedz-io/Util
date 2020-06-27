@@ -68,7 +68,7 @@ namespace Feedz.Util.Processes
                     process.StartInfo.CreateNoWindow = true;
                     process.StartInfo.RedirectStandardOutput = true;
                     process.StartInfo.RedirectStandardError = true;
-
+                    process.StartInfo.RedirectStandardInput = true;
 
                     if (environmentVars != null)
                         foreach (string environmentVar in environmentVars.Keys)
@@ -133,8 +133,8 @@ namespace Feedz.Util.Processes
                         while(!process.WaitForExit(100))
                         {}
                         
-                        outputWaitHandle.WaitOne(100);
-                        errorWaitHandle.WaitOne(100);
+                        outputWaitHandle.WaitOne(1000);
+                        errorWaitHandle.WaitOne(1000);
 
                         return process.ExitCode;
                     }
