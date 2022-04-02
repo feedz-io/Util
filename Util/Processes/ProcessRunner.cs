@@ -31,7 +31,8 @@ namespace Feedz.Util.Processes
             string arguments,
             string workingDirectory = null,
             StringDictionary environmentVars = null,
-            CancellationToken token = default(CancellationToken))
+            CancellationToken token = default(CancellationToken),
+            TimeSpan? waitForFinalOutputTimeout = null)
         {
             var output = new StringBuilder();
             var error = new StringBuilder();
@@ -54,7 +55,8 @@ namespace Feedz.Util.Processes
             Action<string> error,
             string workingDirectory = null,
             StringDictionary environmentVars = null,
-            CancellationToken token = default(CancellationToken))
+            CancellationToken token = default(CancellationToken),
+            TimeSpan? waitForFinalOutputTimeout = null)
         {
             try
             {
@@ -133,11 +135,8 @@ namespace Feedz.Util.Processes
                         while(!process.WaitForExit(100))
                         {}
 
-                        process.CancelErrorRead();
-                        process.CancelOutputRead();
-
-                        outputWaitHandle.WaitOne(10000);
-                        errorWaitHandle.WaitOne(10000);
+                        outputWaitHandle.WaitOne(waitForFinalOutputTimeout ?? Timeout.InfiniteTimeSpan);
+                        errorWaitHandle.WaitOne(waitForFinalOutputTimeout ?? Timeout.InfiniteTimeSpan);
 
                         return process.ExitCode;
                     }
