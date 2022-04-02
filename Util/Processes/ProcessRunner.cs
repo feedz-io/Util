@@ -132,9 +132,12 @@ namespace Feedz.Util.Processes
 
                         while(!process.WaitForExit(100))
                         {}
-                        
-                        outputWaitHandle.WaitOne(1000);
-                        errorWaitHandle.WaitOne(1000);
+
+                        process.CancelErrorRead();
+                        process.CancelOutputRead();
+
+                        outputWaitHandle.WaitOne(10000);
+                        errorWaitHandle.WaitOne(10000);
 
                         return process.ExitCode;
                     }
